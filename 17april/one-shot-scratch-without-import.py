@@ -14,8 +14,8 @@ import time
 JOB_NAME    = 'WR3400_Modal'
 MODEL_NAME  = 'Model-1'
 NUM_EIGEN   = 20
-BRACKET_SEED = 5.0
-WIRE_SEED    = 0.15
+BRACKET_SEED = 4.0
+WIRE_SEED    = 5.0
 # ============================================================
 
 print("\n" + "="*55)
@@ -141,7 +141,7 @@ for wname in wire_parts:
     try: part.deleteMesh()
     except: pass
 
-    part.seedPart(size=WIRE_SEED)
+    part.seedPart(size=WIRE_SEED, deviationFactor=0.15, minSizeFactor=0.1)
     part.setMeshControls(regions=part.cells, elemShape=TET, technique=FREE)
 
     elem = mesh.ElemType(elemCode=C3D4, elemLibrary=STANDARD)
